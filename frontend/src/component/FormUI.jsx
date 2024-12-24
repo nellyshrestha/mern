@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import { toast } from "react-toastify";
 function FormUI(){
 
   const [name,setName]=useState("");
@@ -17,9 +17,9 @@ function FormUI(){
       })
       const data = await result.json();
       if(data){
-        alert(data.msg);
+        toast.success(data.msg);
       }else{
-        alert("log in failed")
+        toast.error(error.msg);
       }
 
     }catch(error){
@@ -36,7 +36,7 @@ function FormUI(){
       <input className='border-black p-4 rounded-2xl mb-3 w-full ' type="text" placeholder='enter you Email' onChange={(e)=>setEmail(e.target.value)}/><br></br>
       <input className='border-black p-4 rounded-2xl mb-3 w-full' type="text" placeholder='enter you Password' onChange={(e)=>setPassword(e.target.value)}/><br></br>
       <button className='bg-indigo-600 p-2 hover:bg-indigo-700 text-white font-bold rounded-full text-3xl w-full 'type='submit' > Sign Up</button>
-      
+      <p className='text-center'>Have account?? <a href='/'>Log In</a></p>
      </form>
      </div>
     </>
